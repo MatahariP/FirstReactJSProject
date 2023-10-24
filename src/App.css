@@ -12,15 +12,41 @@ img{
   transform: scaleX(-1);
  
 }
-.header  li{
+/* .header{
+  display:flex;
+  justify-content: space-between;
+} */
+/* ul {
   display: inline;
+} */
+.header {
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  display:flex;
+  justify-content: space-between;
+  background-color: #008CBA;
+  opacity: 0.8;
+  padding: 10px 40px 1px 30px;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 500;
   color: whitesmoke;
+  margin: -8px;
 }
-.header li:last-child{
-  float: right;
+.footer {
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  
+  text-align: center;
+  background-color: #008CBA;
+  opacity: 0.8;
+  padding: 1px 30px 1px 30px;
+  font-size: 20px;
+  font-weight: 800;
+  color: whitesmoke;
+  margin-top: px;
 }
+.judul{
+  font-size: 20px;
+} 
+
 .isi button{
   border: none;
   color: white;
@@ -32,8 +58,6 @@ img{
   background-color: #e7e7e7;
   color: black;
   margin: 10px;
-  /* align-content:; */
-  /* bottom: 10px; */
   border-radius: 8px;
 }
 button:hover{
@@ -47,24 +71,14 @@ button:hover{
   font-weight: 500;
 }
 .isi {
-  height: 300px;
-  background-color: #e0d4d4;
+  height:fit-content;
+  background-color: #d8d8d8;
   display: grid;
   grid-template-columns: 1fr 1fr ;
   justify-items: center;
 }
-/* .kiri{
-  padding-left:70px;
-}
-.kiri button{
-  justify-content: center;
-} */
-.header {
-  background-color: #008CBA;
-  opacity: 0.8;
-  padding: 10px 40px 1px 10px;
-  margin: -8px;
-}
+
+
 
 .App-logo {
   height: 40vmin;
