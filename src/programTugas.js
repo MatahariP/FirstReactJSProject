@@ -1,6 +1,18 @@
+/* eslint-disable array-callback-return */
 import {useState} from 'react';
 
 let playCount=0;
+let inputMaxScore=0;
+let dataUser1 = {
+    namaUser1: "",
+    pilihanUser1: "",
+    scoreUser1: 0
+}
+let dataUser2 ={
+    namaUser2:"CPU",
+    pilihanUser2:"",
+    scoreUser2: 0
+}
 const resetGame = () =>{
 alert("Terima kasih sudah bermain!");
         Object.keys(dataUser1).map((key)=>{
@@ -23,15 +35,19 @@ alert("Terima kasih sudah bermain!");
 }
 const countSet = () =>{
     playCount = prompt("Berapa kali set untuk menang")
-    if(playCount==0){
+    playCount = parseInt(playCount)
+    if(playCount<=0){
         const validasi = window.confirm("apakah anda tidak mau bermain lagi?")
-        if(validasi==true){
+        if(validasi){
             resetGame()
         }else{
             countSet()
         }
-    }else{
+    }else if(playCount>0){
         playCount++;
+    }else{
+        alert("Inputan harus angka")
+        countSet()
     }
 }
 const playAgain = () =>{
@@ -66,11 +82,11 @@ const playAgain = () =>{
         }else if(dataUser1.scoreUser1<dataUser2.scoreUser2){
             dataUser2.victoryCount++
         }
-        if(playCount==dataUser1.victoryCount){
+        if(playCount===dataUser1.victoryCount){
             alert(`Selamat ${dataUser1.namaUser1} Menang`)
             playCount=0;
             playAgain()
-        }else if(playCount==dataUser2.victoryCount){
+        }else if(playCount===dataUser2.victoryCount){
             alert(`yahhh ${dataUser2.namaUser2} Menang`)
             playCount=0;
             playAgain()
@@ -85,36 +101,34 @@ const playAgain = () =>{
 const  pilihAngkaRandom=() => {
     return Math.floor(Math.random() * 3) + 1;
 }
-let inputMaxScore=0;
+
 const startGame=()=>{
 
     while(dataUser1.namaUser1===""){
         const inputName = prompt("Input Nama Anda")
-        if(inputName){
+        if(inputName.trim()){
             dataUser1.namaUser1=inputName;
             while(inputMaxScore===0){
     
                 inputMaxScore = prompt("Berapa score untuk menang")
+                inputMaxScore = parseInt(inputMaxScore)
+                if(isNaN(inputMaxScore)){
+                    alert("inputan harus angka")
+                    inputMaxScore=0
+                }
             }
             break;
         }  
     }  
 }
-let dataUser1 = {
-    namaUser1: "",
-    pilihanUser1: "",
-    scoreUser1: 0
-}
-let dataUser2 ={
-    namaUser2:"CPU",
-    pilihanUser2:"",
-    scoreUser2: 0
-}
+
 const cekScore = () =>{
-    if(dataUser1.scoreUser1==inputMaxScore){
+    console.log(dataUser1)
+    console.log(dataUser2)
+    if(dataUser1.scoreUser1===inputMaxScore){
         alert(`${dataUser1.namaUser1} Menang!!`)
         playAgain()
-    }else if(dataUser2.scoreUser2==inputMaxScore){
+    }else if(dataUser2.scoreUser2===inputMaxScore){
         alert(`${dataUser2.namaUser2} Menang!!`)
         playAgain()
     }
@@ -152,14 +166,7 @@ const tambahScore = () =>{
 
 
 const ProgramTugas = () =>{
-    startGame()
-    const biodata = {
-        nama: "Ma",
-        NIM: "2110512086",
-        programStudi:"S1 Sistem Informasi",
-        angkatan: 2021
-    }
-   
+    startGame() 
     const [imageUser1, setImageUser1] = useState("logo192.png");
     const [imageUser2, setImageUser2] = useState("logo192.png");
 
@@ -221,22 +228,7 @@ const ProgramTugas = () =>{
 
     return(
         <>
-       <div className="header">
-        <div>
-        <p>{biodata.nama} | {biodata.NIM}</p>
-        </div>
-        <div>
-        <p className="judul">Batu Gunting Kertas</p>
-        </div>
-        <div>
-        <p>{biodata.programStudi} {biodata.angkatan}</p>
-        </div>
-        {/* <ul>
-            <li>{biodata.nama} | {biodata.NIM}</li>
-            <li>Batu Gunting Kertas</li>
-            <li>{biodata.programStudi} {biodata.angkatan}</li>
-        </ul> */}
-        </div>
+      
         {/* <h1>Batu Gunting Kertas</h1> */}
         <div className="isi">
             <div>
@@ -273,9 +265,7 @@ const ProgramTugas = () =>{
                 </div> 
             </div>
         </div>
-        <div className="footer">
-        <p >Tugas 1 Stucy Club Web Beginner</p>
-        </div>
+        
         
         </>
     )
