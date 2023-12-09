@@ -28,7 +28,7 @@ img {
   font-size: 18px;
   font-weight: 500;
   color: whitesmoke;
-  margin: -8px;
+  margin: x;
 }
 .footer {
   /* grid-template-columns: 1fr 1fr 1fr; */
@@ -40,8 +40,8 @@ img {
   font-size: 18px;
   font-weight: 500;
   color: whitesmoke;
-  margin-top: 124px;
-  margin-right: -40px;
+  margin-top: 75px;
+  margin-right: px;
   opacity: 0.8;
   font-size: 20px;
   font-weight: 800;
